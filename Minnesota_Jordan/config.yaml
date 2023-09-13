@@ -13,7 +13,7 @@ data:
 
 channel:
     # meters; if ommitted, will be solved for as a free variable
-    width: 60
+    width: 100
     # meters; if omitted, will be solved for as a free variable
     # depth:
     # unitless
@@ -21,10 +21,32 @@ channel:
     # Use depth instead of hydraulic radius for calculations. True/False.
     use_depth: False
 
+bounds:
+    # Uncomment the following to set them different from the defaults
+    # They should be given in LOWER, UPPER
+    mannings_n_bounds:
+        - 0.020
+        - 0.035
+    # floodplain_coeff_bounds:
+    #    - LOWER
+    #    - UPPER
+    # floodplain_exponent_bounds:
+    #    - LOWER
+    #    - UPPER
+    stage_offset_bounds:
+        - 0
+        - 1
+    channel_depth_bounds:
+        - 2
+        - 10
+    channel_width_bounds:
+        - 40
+        - 180
+
 output:
     # CSV output file name
     outfile: 'Manning2.csv'
     # True/False Boolean flags
-    plot: False
+    plot: True
     verbose: True
 
