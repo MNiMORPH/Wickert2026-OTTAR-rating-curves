@@ -1,0 +1,56 @@
+river: Diamond Fork
+station: Red Hollow
+
+author: Andy Wickert
+
+data:
+    # Filename expected with columns "Q", "Stage"
+    filename: 'DFk_before_stage_adjustment__Q0stage0approx.tsv'
+    # tab, space, or comma
+    delimiter: 'tab'
+    # If data set uses US cfs (Q) and feet (Stage), converts these to metric.
+    us-units: True
+
+channel:
+    # meters; if ommitted, will be solved for as a free variable
+    # Cannon: 
+    # width: 50
+    # meters; if omitted, will be solved for as a free variable
+    # depth: 3
+    # Initial guess of stage - stage(Q=0); the latter also equals stage(h=0)
+    # meters
+    stage_offset: 0
+    # unitless
+    slope: 1E-2
+    # Use depth instead of hydraulic radius for calculations. True/False.
+    use_depth: False
+
+bounds:
+    # Uncomment the following to set them different from the defaults
+    # They should be given in LOWER, UPPER
+    mannings_n_bounds:
+        - 0.025
+        - 0.055
+    # floodplain_coeff_bounds:
+    #    - LOWER
+    #    - UPPER
+    floodplain_exponent_bounds:
+        - 0
+        - 3
+    Q_offset_bounds:
+        - -5
+        - 5
+    channel_depth_bounds:
+        - 0.4
+        - 2
+    channel_width_bounds:
+        - 6
+        - 30
+
+output:
+    # CSV output file name
+    outfile: 'Manning2.csv'
+    # True/False Boolean flags
+    plot: True
+    verbose: True
+
