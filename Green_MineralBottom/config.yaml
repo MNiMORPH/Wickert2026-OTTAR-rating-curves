@@ -1,0 +1,74 @@
+river: Diamond Fork
+station: Red Hollow
+
+author: Andy Wickert
+
+data:
+    # Filename expected with columns "Discharge", "Stage"
+    filename: 'GreenRiver_MineralBottom_Metric.tsv'
+    # tab, space, or comma
+    delimiter: 'tab'
+    # If data set uses US cfs (Q) and feet (Stage), converts these to metric.
+    us-units: False
+
+channel:
+    # meters; if ommitted, will be solved for as a free variable
+    #width: 13.4
+    # meters; if omitted, will be solved for as a free variable
+    # depth: 3
+    # unitless
+    slope: 0.0002
+    # Use depth instead of hydraulic radius for calculations. True/False.
+    use_depth: False
+
+bounds:
+    # Uncomment the following to set them different from the defaults
+    # They should be given in LOWER, UPPER
+    mannings_n_bounds:
+        - 0.015
+        - 0.035
+    # floodplain_coeff_bounds:
+    #    - LOWER
+    #    - UPPER
+    floodplain_exponent_bounds:
+        - 1
+        - 3
+    stage_offset_bounds:
+        - 0
+        - 2
+    channel_depth_bounds:
+        - 2
+        - 3
+    channel_width_bounds:
+        - 76
+        - 76.0000001
+
+plotting:
+    # If this is present, the plot will be saved.
+    # Format set by file extension.
+    # Path may be relative or absolute
+    savepath: 'GreenRiver_MineralBottom.pdf'
+    # True/False Boolean flag
+    show: True
+    # Optional fixed plotting bounds
+    #stage_min: -0.001
+    #stage_max: 12
+    #discharge_min: 
+    #discharge_max: 3500
+    # Plot curve even if discharge is negative (nonphysical)
+    display_negative_rating_curve: False
+    # Markers and lines for stage offsets and bank heights
+    stage_offset_hash_bottom: False
+    stage_offset_hash_top: False
+    stage_offset_dotted_line: True
+    bank_height_hash_bottom: False
+    bank_height_hash_top: False
+    bank_height_dotted_line: True
+
+output:
+    # CSV output file name
+    outfile: 'Manning2.csv'
+    # True/False Boolean flags
+    plot: True
+    verbose: True
+
